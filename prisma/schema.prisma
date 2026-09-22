@@ -1,5 +1,5 @@
 // Rename this file to prisma/schema.prisma before running Prisma.
-datasource db { provider = "sqlite" url = env("DATABASE_URL") }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
 generator client { provider = "prisma-client-js" }
 
 model User {

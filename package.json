@@ -1,9 +1,24 @@
 {
-  "name":"telegram-vip-pix-bot",
-  "version":"1.0.0",
-  "private":true,
-  "type":"module",
-  "scripts":{"dev":"node --watch src/index.js","start":"node src/index.js","prisma:generate":"prisma generate","prisma:migrate":"prisma migrate dev --name init"},
-  "dependencies":{"@prisma/client":"latest","axios":"latest","dotenv":"latest","express":"latest","node-cron":"latest","qrcode":"latest","telegraf":"latest"},
-  "devDependencies":{"prisma":"latest"}
+  "name": "telegram-vip-pix-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init"
+  },
+  "dependencies": {
+    "@prisma/client": "7.10.0",
+    "axios": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "node-cron": "latest",
+    "qrcode": "latest",
+    "telegraf": "latest"
+  },
+  "devDependencies": {
+    "prisma": "7.10.0"
+  }
 }
