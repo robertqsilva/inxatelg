@@ -1,0 +1,52 @@
+// Rename this file to prisma/schema.prisma before running Prisma.
+datasource db { provider = "sqlite" url = env("DATABASE_URL") }
+generator client { provider = "prisma-client-js" }
+
+model User {
+  id                Int           @id @default(autoincrement())
+  telegramId        String        @unique
+  username          String?
+  firstName         String?
+  ageConfirmed      Boolean       @default(false)
+  asaasCustomerId   String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  subscriptions     Subscription[]
+  payments          Payment[]
+}
+
+model Subscription {
+  id                  Int       @id @default(autoincrement())
+  userId              Int
+  status               String    @default("PENDING")
+  startedAt            DateTime?
+  expiresAt            DateTime?
+  reminderSentAt       DateTime?
+  lastPaymentId        String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  user                 User      @relation(fields:[userId], references:[id])
+  payments             Payment[]
+}
+
+model Payment {
+  id                  Int       @id @default(autoincrement())
+  userId              Int
+  subscriptionId       Int
+  asaasPaymentId       String    @unique
+  status               String    @default("PENDING")
+  value                Float
+  dueDate              DateTime
+  paidAt               DateTime?
+  pixPayload           String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  user                 User      @relation(fields:[userId], references:[id])
+  subscription         Subscription @relation(fields:[subscriptionId], references:[id])
+}
+
+model WebhookEvent {
+  id          String   @id
+  event       String
+  receivedAt  DateTime @default(now())
+}
