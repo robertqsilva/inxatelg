@@ -10,11 +10,13 @@
     "prisma:migrate": "prisma migrate dev --name init"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "7.10.0",
     "axios": "latest",
     "dotenv": "latest",
     "express": "latest",
     "node-cron": "latest",
+    "pg": "^8.23.0",
     "qrcode": "latest",
     "telegraf": "latest"
   },
